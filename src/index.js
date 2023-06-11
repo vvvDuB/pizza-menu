@@ -3,7 +3,18 @@ import ReactDOM from "react-dom/client";
 
 function App() {
     return (
-        <h1>Ciao mondo!</h1>
+        <div>
+            <h1>Ciao mondo!</h1>
+            <Pizza />
+        </div>
+    );
+}
+
+function Pizza() {
+    return (
+        <div>
+            <h2>Pizza!</h2>
+        </div>
     );
 }
 
