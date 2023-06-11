@@ -81,8 +81,19 @@ function Menu() {
 }
 
 function Footer() {
-    c
+    const ora = new Date().getHours();
+    const apertura = 19;
+    const chiusura = 23;
 
+    const open = ora >= apertura && ora <= chiusura;
+
+    console.log(open)
+    /*
+    if(ora >= apertura && ora <= chiusura) 
+        alert('Siamo ancora aperti!');
+    else 
+        alert('Siamo chiusi.');
+    */
     return (
         <section>
             <footer>
