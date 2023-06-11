@@ -4,10 +4,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -56,11 +58,11 @@ body {
 .header h1::after {
   display: block;
   content: "";
-  height: 3px;
-  width: 4rem;
+  height: 2px;
+  width: 10rem;
   background-color: #edc84b;
   position: absolute;
-  top: calc(50% - 1px);
+  top: calc(90% - 55px);
 }
 
 .header h1::before {
@@ -153,6 +155,23 @@ body {
 
 .footer {
   font-size: 1.4rem;
+}
+
+.banner {
+    border: 1px solid green;
+    padding: 6px 12px;
+    border-radius: 7px;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+.banner:hover {
+    transform: scale(1.2);
+    transition: all .1s linear;
 }
 
 .order {

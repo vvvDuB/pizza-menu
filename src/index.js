@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
+import './index.css';
 
 const pizzaData = [
     {
@@ -49,7 +50,7 @@ const pizzaData = [
 
 function App() {
     return (
-        <div>
+        <div className="container">
             <Header />
             <Menu />
             <Footer />            
@@ -58,10 +59,16 @@ function App() {
 }
 
 function Header() {
+
+    const titleStyle = {
+        //color: "red", 
+        //fontSize: "1.8rem"
+    }
+
     return (
         <section>
-            <header>
-                <h1>React Pizza Co.</h1>
+            <header className="header">
+                <h1 style={titleStyle}>React Pizza Co.</h1>
             </header>
         </section>
     );
@@ -70,8 +77,8 @@ function Header() {
 function Menu() {
     return (
         <section>
-            <main>
-                <h3>Il nostro menù</h3>
+            <main id="menu" className="menu">
+                <h2>Il nostro menù</h2>
                 <Pizza />
                 <Pizza />
                 <Pizza />
@@ -81,13 +88,26 @@ function Menu() {
 }
 
 function Footer() {
+
+    const [clock, setClock] = useState(new Date().toLocaleTimeString());
+    const [open, setOpen] = useState(false); 
+    const [openStyle, setOpenStyle] = useState(null);
+
     const ora = new Date().getHours();
     const apertura = 19;
     const chiusura = 23;
 
-    const open = ora >= apertura && ora <= chiusura;
-
-    console.log(open)
+    useEffect(() => {
+        setOpen(ora >= apertura && ora <= chiusura);
+        setInterval(() => {
+            setClock(new Date().toLocaleTimeString());
+        }, 1000);
+        if(open) {
+            setOpenStyle({border: "1px solid green"});
+        }else{
+            setOpenStyle({border: "1px solid red"});
+        }
+    });
     /*
     if(ora >= apertura && ora <= chiusura) 
         alert('Siamo ancora aperti!');
@@ -96,8 +116,13 @@ function Footer() {
     */
     return (
         <section>
-            <footer>
-                {new Date().toLocaleTimeString()} Siamo aperti!! 
+            <footer className="footer">
+                {clock}
+                <a href="#menu">
+                    <div style={openStyle} className="banner">
+                        {open ? 'Siamo aperti!!' : 'Siamo chiusi :('}
+                    </div> 
+                </a>
             </footer>
         </section>
     );
@@ -107,7 +132,7 @@ function Pizza() {
     return (
         <div>
             <img src="pizzas/spinaci.jpg" alt="pizza spinaci"/>
-            <h2>Pizza Spinaci</h2>
+            <h3>Pizza Spinaci</h3>
             <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
             <h4>18$</h4>
         </div>
