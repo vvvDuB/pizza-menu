@@ -136,17 +136,22 @@ function Footer() {
                     </div>
                 </a>
                 {open ? (
-
-                    <div className="order">
-                        <p>
-                            Siamo aperti fino alle {chiusura}:00!
-                        </p>
-                        <button className="btn">Ordina</button>
-                    </div>
+                    <Order chiusura={chiusura} />
                 ) : <p>Siamo aperti dalle {apertura} alle {chiusura}.</p>
                 }
             </footer>
-        </section>
+        </section >
+    );
+}
+
+function Order(props) {
+    return (
+        <div className="order">
+            <p>
+                Siamo aperti fino alle {props.chiusura}:00!
+            </p>
+            <button className="btn">Ordina</button>
+        </div>
     );
 }
 
