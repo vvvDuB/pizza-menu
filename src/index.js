@@ -84,9 +84,14 @@ function Menu() {
             <main id="menu" className="menu">
                 <h2>Il nostro menù</h2>
                 {pizzasNum > 0 ? (
-                    <ul className="pizzas">
-                        {pizzas.map(el => <Pizza pizza={el} key={el.name} />)}
-                    </ul>
+                    <React.Fragment key={'piero'}>
+                        <p>
+                            Autentica cucina italiana, 6 piatti tipici scelti da noi tutti delizioni, origanici e fatti da noi!
+                        </p>
+                        <ul className="pizzas">
+                            {pizzas.map(el => <Pizza pizza={el} key={el.name} />)}
+                        </ul>
+                    </React.Fragment>
                 ) : (
                     <p>Stiamo ancora lavorando al menù...</p>
                 )}
@@ -144,20 +149,20 @@ function Footer() {
     );
 }
 
-function Order(props) {
+function Order({ chiusura }) {
     return (
         <div className="order">
             <p>
-                Siamo aperti fino alle {props.chiusura}:00!
+                Siamo aperti fino alle {chiusura}:00!
             </p>
             <button className="btn">Ordina</button>
         </div>
     );
 }
 
-function Pizza(props) {
+function Pizza({ pizza }) {
 
-    const { name, ingredients, price, photoName, soldOut } = props.pizza;
+    const { name, ingredients, price, photoName, soldOut } = pizza;
 
     //if (soldOut) return null;
 
